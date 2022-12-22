@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "react-dnd-html5-backend": "^16.0.1"
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-widgets": "^5.8.4"
   }
 }
