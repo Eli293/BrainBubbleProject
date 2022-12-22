@@ -4,7 +4,10 @@ import "react-toastify/dist/ReactToastify.css";
 import Combobox from "react-widgets/Combobox";
 import Idea from './Idea';
 import Draggable from 'react-draggable'
-import IdeaCreator  from './IdeaCreator';
+import IdeaCreator  from '../IdeaCreator';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import IdeaCloud from '../IdeaCloud';
+
 
 let id = 2;
 function CloudWall()
@@ -25,6 +28,8 @@ function CloudWall()
           });
           setIdea(idea2);
     }
+    const [desc, setDesc] = useState("");
+    const [type, setType] = useState("Cloud");
 
     const deleteIdea = (id)=>
     {
@@ -32,11 +37,15 @@ function CloudWall()
         const cloudwall = [...idea];
         const newcloudwall = cloudwall.filter(item => item.id !== id);
         setIdea(newcloudwall);
+        setType("None");
     }
+
 
     const addIdea = (desc, type)=>
     {
         //post request
+        <IdeaCloud desc={desc} type={type}></IdeaCloud>
+        
         const newcloudwall = [...idea, {id:id, desc:desc, type:type, clicked:false}]
         setIdea(newcloudwall);
         id++;
@@ -44,9 +53,6 @@ function CloudWall()
             position: toast.POSITION.TOP_CENTER
         });
     }
-
-    const [desc, setDesc] = useState("");
-    const [type, setType] = useState("Cloud");
 
     const doTypeChange=(event)=>{
         setType(event.currentTarget.value);
@@ -63,6 +69,7 @@ function CloudWall()
 
     return (
         <div>
+            <div>
             <Draggable defaultPosition={{x: 0, y: 0}}>
             <div className={type}>
                 <div className='content'>
@@ -74,29 +81,20 @@ function CloudWall()
                 </div>
             </div>
             </Draggable>
-        <div>
-            <IdeaCreator name="Idea Creator">
-            <div>
-                <Combobox
-                    defaultValue="Cloud"
-                    data={["Cloud", "Square", "Circle" ]}
-                    onChange={doTypeChange}
-                    placeholder="Choose a Bubble Type"></Combobox>
-                </div>
-                <div>
+            </div>
+    <div className="container mt-3 ml-100px ">
+    <div className="card p-2 py-3">
+    <div className="text-center">
+    <div className="col-md-12">    
 
-                <form onSubmit={ideaCreation}>
+    <form onSubmit={ideaCreation}>
 			      <input value={desc}
                      onChange={doDescChange}
                      placeholder="What's your idea?">
 			      </input>
 			      <input type="submit" value="Add"></input>
-			    </form>  
-
-                </div>
-            </IdeaCreator>
-        </div>
-        </div>
+			    </form> 
+    </div></div></div></div></div>
     )
 }
 export default CloudWall;

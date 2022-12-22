@@ -1,15 +1,60 @@
+import {useState} from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import Combobox from "react-widgets/Combobox";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+let id = 2;
+function IdeaCreator()
+{
+    const initialCloudWall = [{id: 1, desc:'Random Idea', type:'Cloud', clicked:false}]; //get request to backend
 
-function IdeaCreator(props){
+    const [idea, setIdea] = useState(initialCloudWall);
 
-    <div className="container mt-3 ">
-    <div className="card p-3 py-2">
-    <div className="text-center">
-    <div className="col-md-12">
+    const [desc, setDesc] = useState("");
+    const [type, setType] = useState("Cloud");
 
-    <div className="text-center mt-3">
-      <h5 className="mt-2">{props.name}</h5>
+    const addIdea = (desc, type)=>
+    {
+        //post request
+        const newcloudwall = [...idea, {id:id, desc:desc, type:type, clicked:false}]
+        setIdea(newcloudwall);
+        id++;
+        toast.success("A new Idea has appeared!", {
+            position: toast.POSITION.TOP_CENTER
+        });
+    }
 
-    </div></div></div></div></div>
+    const doTypeChange=(event)=>{
+        setType(event.currentTarget.value);
+    }
+    const doDescChange=(event)=>{
+        setDesc(event.currentTarget.value);
+    }
+
+    const ideaCreation=(event)=>{
+        event.preventDefault();
+        addIdea(desc,type);
+        setDesc("");
+    }
+    return(
+        <div>
+                <Combobox
+                    defaultValue="Cloud"
+                    data={["Cloud", "Square", "Circle" ]}
+                    value={type}
+                    onChange={type => setType(type)}
+                    placeholder="Choose a Bubble Type"></Combobox> 
+                    
+
+                <form onSubmit={ideaCreation}>
+			      <input value={desc}
+                     onChange={doDescChange}
+                     placeholder="What's your idea?">
+			      </input>
+			      <input type="submit" value="Add"></input>
+			    </form> 
+        </div>
+    );
 }
 export default IdeaCreator;

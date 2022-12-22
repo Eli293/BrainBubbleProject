@@ -1,8 +1,9 @@
 import Editable from 'react-editable-title';
 import './App.css';
-import CloudWall from './CloudWall';
+import CloudWall from './components/CloudWall';
 import { useState } from 'react';
 import IdeaCreator from './IdeaCreator';
+import Idea from './components/Idea';
 
 function App() {
     const [project, setProject] = useState('Brain Bubble Project');
@@ -30,12 +31,8 @@ function App() {
           editButton
           cb={handleCreditUpdate}></Editable>
       </h3>
-
       <CloudWall></CloudWall>
-      <IdeaCreator name="Idea Creator"></IdeaCreator>
-
-
-    </div>
+</div>
   );
 }
 

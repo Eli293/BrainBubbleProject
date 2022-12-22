@@ -1,8 +1,15 @@
 .App {
   text-align: center;
+  background-color: #61dafb;
 }
 .Wall{
   background-color: #61dafb
+}
+.White{
+  background-color: #ccc;
+}
+.None{
+  display: none;
 }
 
 .App-logo {
