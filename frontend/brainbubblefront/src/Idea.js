@@ -1,12 +1,11 @@
-
-function Idea({id, item, type, deleteIdea})
+import Draggable from 'react-draggable'
+function Idea({id, item, deleteIdea})
 {
+
  return(
     <>
     <h4>
-        
-        <IdeaCloud type={type}></IdeaCloud>
-
+            
     </h4>
     </>
  )

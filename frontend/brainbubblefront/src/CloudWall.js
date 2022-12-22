@@ -3,7 +3,10 @@ import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import Combobox from "react-widgets/Combobox";
 import Idea from './Idea';
+import Draggable from 'react-draggable'
+import IdeaCreator  from './IdeaCreator';
 
+let id = 2;
 function CloudWall()
 {
     const initialCloudWall = [{id: 1, desc:'Random Idea', type:'Cloud'}]; //get request to backend
@@ -39,8 +42,6 @@ function CloudWall()
         setDesc(event.currentTarget.value);
     }
 
-    
-
     const ideaCreation=(event)=>{
         event.preventDefault();
         addIdea(desc,type);
@@ -49,21 +50,24 @@ function CloudWall()
 
     return (
         <div>
-            <div className='Bubble'>
-           {idea.map((item)=>(
+            <Draggable defaultPosition={{x: 0, y: 0}}>
+            <div className={type}>
+                <div className='content'>
+                     {idea.map((item)=>(
 
-                <Idea id={item.id} item={item.desc} type={item.type} deleteIdea={deleteIdea}></Idea>
+                        <Idea id={item.id} item={item.desc} deleteIdea={deleteIdea}></Idea>
 
-           ))} 
+                      ))} 
+                </div>
             </div>
-            <div>
-                
+            </Draggable>
+
+               
             <IdeaCreator name="Idea Creator">
-                
-               <div>
+            <div>
                 <Combobox
                     defaultValue="Cloud"
-                    data={["Cloud", "Square", "List" ]}
+                    data={["Cloud", "Square", "Circle" ]}
                     onChange={doTypeChange}
                     placeholder="Choose a Bubble Type"></Combobox>
                 </div>
@@ -79,8 +83,7 @@ function CloudWall()
 
                 </div>
             </IdeaCreator>
-
-            </div>
+            
 
 
         </div>
