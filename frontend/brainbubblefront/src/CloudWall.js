@@ -9,9 +9,22 @@ import IdeaCreator  from './IdeaCreator';
 let id = 2;
 function CloudWall()
 {
-    const initialCloudWall = [{id: 1, desc:'Random Idea', type:'Cloud'}]; //get request to backend
+    const initialCloudWall = [{id: 1, desc:'Random Idea', type:'Cloud', clicked:false}]; //get request to backend
 
     const [idea, setIdea] = useState(initialCloudWall);
+
+
+    const toggleDelete = (id) =>{
+        const idea2 = idea.map((item)=>{
+            if(item.id !== id){
+              return item;
+            }
+            else{
+              return{...item, clicked: !item.clicked};
+            }
+          });
+          setIdea(idea2);
+    }
 
     const deleteIdea = (id)=>
     {
@@ -24,7 +37,7 @@ function CloudWall()
     const addIdea = (desc, type)=>
     {
         //post request
-        const newcloudwall = [...idea, {id:id, desc:desc, type:type}]
+        const newcloudwall = [...idea, {id:id, desc:desc, type:type, clicked:false}]
         setIdea(newcloudwall);
         id++;
         toast.success("A new Idea has appeared!", {
@@ -55,14 +68,13 @@ function CloudWall()
                 <div className='content'>
                      {idea.map((item)=>(
 
-                        <Idea id={item.id} item={item.desc} deleteIdea={deleteIdea}></Idea>
+                        <Idea id={item.id} item={item.desc} deleteIdea={deleteIdea} clicked={item.clicked} toggleDelete={toggleDelete}></Idea>
 
                       ))} 
                 </div>
             </div>
             </Draggable>
-
-               
+        <div>
             <IdeaCreator name="Idea Creator">
             <div>
                 <Combobox
@@ -83,9 +95,7 @@ function CloudWall()
 
                 </div>
             </IdeaCreator>
-            
-
-
+        </div>
         </div>
     )
 }

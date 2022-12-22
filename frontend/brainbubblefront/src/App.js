@@ -2,6 +2,7 @@ import Editable from 'react-editable-title';
 import './App.css';
 import CloudWall from './CloudWall';
 import { useState } from 'react';
+import IdeaCreator from './IdeaCreator';
 
 function App() {
     const [project, setProject] = useState('Brain Bubble Project');
@@ -31,6 +32,7 @@ function App() {
       </h3>
 
       <CloudWall></CloudWall>
+      <IdeaCreator name="Idea Creator"></IdeaCreator>
 
 
     </div>

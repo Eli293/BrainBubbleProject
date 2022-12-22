@@ -1,12 +1,13 @@
-import Draggable from 'react-draggable'
-function Idea({id, item, deleteIdea})
-{
 
+function Idea({id, item, clicked, deleteIdea, toggleDelete})
+{
+    
  return(
     <>
-    <h4>
-            
+    <h4 onClick={()=>{toggleDelete(id)}} className="App">
+           {item} 
     </h4>
+    {clicked && <button onClick={()=>{deleteIdea(id)}}>Erase</button>}
     </>
  )
 }
