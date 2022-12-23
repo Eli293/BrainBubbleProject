@@ -4,6 +4,7 @@ import CloudWall from './components/CloudWall';
 import { useState } from 'react';
 import IdeaCreator from './IdeaCreator';
 import Idea from './components/Idea';
+import IdeaCloud from './IdeaCloud';
 
 function App() {
     const [project, setProject] = useState('Brain Bubble Project');
@@ -13,9 +14,8 @@ function App() {
       setProject(project);
     }
     const handleCreditUpdate = (credits) => {
-      setProject(credits);
+      setCredits(credits);
     }
-
   return (
     <div className="App">
       <h1>
@@ -31,7 +31,18 @@ function App() {
           editButton
           cb={handleCreditUpdate}></Editable>
       </h3>
+
       <CloudWall></CloudWall>
+
+<br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
 </div>
   );
 }

@@ -44,7 +44,7 @@ function IdeaCreator()
                     data={["Cloud", "Square", "Circle" ]}
                     value={type}
                     onChange={type => setType(type)}
-                    placeholder="Choose a Bubble Type"></Combobox> 
+                    placeholder="Choose a Bubble Type"></Combobox>
                     
 
                 <form onSubmit={ideaCreation}>
