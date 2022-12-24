@@ -7,6 +7,6 @@ import java.util.List;
 
 @Repository
 public interface IdeaRepository extends CrudRepository<Idea, Long> {
-    public List<Idea> findAllbyIdea(String Idea);
+    public List<Idea> findAllByIdeaDesc(String ideaDesc);
 
 }

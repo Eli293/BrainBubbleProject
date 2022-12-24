@@ -18,7 +18,7 @@ public class IdeaService {
         if(ideaPar == null || ideaPar.isEmpty())
             return (List<Idea>) ideaRepository.findAll();
 
-        return ideaRepository.findAllbyIdea(ideaPar);
+        return ideaRepository.findAllByIdeaDesc(ideaPar);
     }
 
     public Idea updateIdea(long ideaId, IdeaRequest ideaRequest){
