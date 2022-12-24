@@ -1,5 +1,5 @@
 package com.example.brainbubbleproject.repository;
-import org.springframework.brain
+import org.springframework.data.repository.Crudrepository;
 import com.example.brainbubbleproject.entity.Idea;
 import org.springframework.stereotype.Repository;
 

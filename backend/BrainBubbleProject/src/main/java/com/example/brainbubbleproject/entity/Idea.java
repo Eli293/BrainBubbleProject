@@ -21,13 +21,13 @@ public class Idea {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
         @Column(name="idea_description", nullable = false)
-        private String firstName;
+        private String ideaDesc;
         @OneToOne(cascade = CascadeType.ALL, optional = false)
-        private Address address;
+        //private Address address;
         public Idea(IdeaRequest ideaRequest){
-            ideaDescription = ideaRequest.getDesc();
+            ideaDesc = ideaRequest.getDesc();
 
-            address = new Address(teacherRequest.getAddress());
+           // address = new Address(teacherRequest.getAddress());
         }
     }
 }

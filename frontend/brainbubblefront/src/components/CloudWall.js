@@ -17,6 +17,7 @@ function CloudWall()
 
 
     const toggleDelete = (id) =>{
+        
         const idea2 = idea.map((item)=>{
             if(item.id !== id){
               return item;
@@ -27,6 +28,7 @@ function CloudWall()
           });
           setIdea(idea2);
     }
+
     const [desc, setDesc] = useState("");
     const [type, setType] = useState("Cloud");
 
@@ -87,7 +89,7 @@ function CloudWall()
                </div>
             </Draggable>   
                
-               
+             
            <div className="container m-0">
            <div className="card m-0">
            <div className="text-center">
