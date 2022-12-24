@@ -5,6 +5,7 @@ import com.example.brainbubbleproject.entity.Idea;
 import com.example.brainbubbleproject.request.IdeaRequest;
 import com.example.brainbubbleproject.response.IdeaResponse;
 import com.example.brainbubbleproject.service.IdeaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,8 @@ public class IdeaController {
     IdeaService ideaService;
 
     @GetMapping()
-    public List<IdeaResponse> getAllIdeas(@RequestParam(required = false) String ideaDesc){
-        List<Idea> ideas = ideaService.getAllIdeas(ideaDesc);
+    public List<IdeaResponse> getAllIdeas(@RequestParam(required = false) String ideaPar){
+        List<Idea> ideas = ideaService.getAllIdeas(ideaPar);
         List<IdeaResponse> ideaResponses = new ArrayList<>();
 
         ideas.forEach(idea ->{

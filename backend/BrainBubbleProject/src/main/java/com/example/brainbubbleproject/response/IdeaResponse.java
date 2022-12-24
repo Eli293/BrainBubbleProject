@@ -14,11 +14,11 @@ public class IdeaResponse {
 
     private long id;
     private String ideaDesc;
-    //private CloudResponse cloudType;
+    private CloudResponse cloud;
 
     public IdeaResponse(Idea idea){
-        id = Idea.getId();
-        ideaDesc = Idea.getIdeaDesc();
-        //cloud = new CloudResponse(Idea.getCloud());
+        id = idea.getId();
+        ideaDesc = idea.getIdeaDesc();
+        cloud = new CloudResponse(idea.getCloud());
     }
 }

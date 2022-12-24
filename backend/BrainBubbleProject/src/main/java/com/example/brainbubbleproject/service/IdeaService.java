@@ -13,7 +13,6 @@ import java.util.List;
 public class IdeaService {
     @Autowired
     IdeaRepository ideaRepository;
-    //second autowired
 
     public List<Idea> getAllIdeas(String ideaPar){
         if(ideaPar == null || ideaPar.isEmpty())
@@ -39,6 +38,6 @@ public class IdeaService {
         if(ideaRepository.existsById(ideaId))
             ideaRepository.deleteById(ideaId);
         else
-            throw new NotFound("Idea not found")
+            throw new NotFound("Idea not found");
     }
 }
