@@ -14,11 +14,13 @@ public class IdeaResponse {
 
     private long id;
     private String ideaDesc;
+    private boolean clicked;
     private CloudResponse cloud;
 
     public IdeaResponse(Idea idea){
         id = idea.getId();
         ideaDesc = idea.getIdeaDesc();
+        clicked = false;
         cloud = new CloudResponse(idea.getCloud());
     }
 }

@@ -2,9 +2,7 @@ import Editable from 'react-editable-title';
 import './App.css';
 import CloudWall from './components/CloudWall';
 import { useState } from 'react';
-import IdeaCreator from './IdeaCreator';
-import Idea from './components/Idea';
-import IdeaCloud from './IdeaCloud';
+import Avvvatars from 'avvvatars-react';
 
 function App() {
     const [project, setProject] = useState('Brain Bubble Project');
@@ -19,7 +17,8 @@ function App() {
   return (
     <div className="App">
       <h1>
-        <Editable
+        <Avvvatars value= {credits}></Avvvatars>
+          <Editable
           text={project}
           editButton
           cb={handleTextUpdate}></Editable>
@@ -34,14 +33,13 @@ function App() {
 
       <CloudWall></CloudWall>
 
-<br></br>
+
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 <br></br><br></br><br></br><br></br><br></br><br></br>
-<br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-<br></br>
-<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 <br></br><br></br><br></br><br></br><br></br><br></br>
-<br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 
 </div>
   );

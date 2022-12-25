@@ -16,10 +16,13 @@ import lombok.Setter;
         private long id;
         @Column(name="idea_description", nullable = false)
         private String ideaDesc;
+        @Column
+        private boolean clicked = false;
         @OneToOne(cascade = CascadeType.ALL, optional = false)
         private Cloud cloud;
         public Idea(IdeaRequest ideaRequest){
             ideaDesc = ideaRequest.getIdeaDesc();
+            clicked = ideaRequest.isClicked();
             cloud = new Cloud(ideaRequest.getCloud());
         }
     }

@@ -1,110 +1,115 @@
-import {useState} from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import {useState, useEffect} from 'react';
+import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import Idea from './Idea';
-import Draggable from 'react-draggable';
-import IdeaCreator  from '../IdeaCreator';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import IdeaCloud from '../IdeaCloud';
-
+import axios from 'axios';
 
 let id = 2;
 function CloudWall()
 {
-    const initialCloudWall = [{id: 1, desc:'Random Idea', clicked:false}]; //get request to backend
+    
 
-    const [idea, setIdea] = useState(initialCloudWall);
+    //We set the initial cloudwall which is an empty array
+    const [cloudwall, setCloudWall] = useState([]);
+    const [desc, setDesc] = useState("");
 
-
-    const toggleDelete = (id) =>{
-        
-        const idea2 = idea.map((item)=>{
-            if(item.id !== id){
-              return item;
-            }
-            else{
-              return{...item, clicked: !item.clicked};
-            }
-          });
-          setIdea(idea2);
+    //get request to backend
+    const loadCloudWallfromAPI = () => {
+        axios.get("localhost:8084/api/ideas")
+        .then(function (response){
+            if(response.status === 200)
+            setCloudWall(response.data);
+        })
     }
 
-    const [desc, setDesc] = useState("");
-    const [type, setType] = useState("Cloud");
+    const ToggleDelete = (id, clicked) =>{
+        
+        //put request to the API
+        axios.put("localhost:8084/api/ideas/"+id,{clicked:!clicked})
+        useEffect(()=>{   
+            loadCloudWallfromAPI(); 
+        },[cloudwall]) 
+    }
 
-    const deleteIdea = (id)=>
+
+
+    const DeleteIdea = (id)=>
     {
         //delete request
-        const cloudwall = [...idea];
-        const newcloudwall = cloudwall.filter(item => item.id !== id);
-        setIdea(newcloudwall);
-        setType("None");
+        axios.delete("localhost:8084/api/ideas/"+id) 
+        useEffect(()=>{   
+            loadCloudWallfromAPI(); 
+        },[cloudwall]) 
+
     }
 
 
-    const addIdea = (desc)=>
+    const AddIdea = (desc)=>
     {
         //post request
-        const newcloudwall = [{id:id, desc:desc, type:type, clicked:false}]
-        setIdea(initialCloudWall, newcloudwall)
-        id++;
+        
+        axios.post("localhost:8084/api/ideas",{
+            "ideaDesc": desc, 
+            "clicked": false,
+            "cloud": {"type":"Cloud", 
+                    "color":"White"}
+        })
+          .then(function (response) {
+            if(response.status === 200)
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+          useEffect(()=>{   
+            loadCloudWallfromAPI(); 
+        },[cloudwall]) 
+        id++
+
         toast.success("A new Idea has appeared!", {
             position: toast.POSITION.TOP_CENTER
         }); 
-    }
-    const doDescChange=(event)=>{
-        setDesc(event.currentTarget.value);
+        
     }
 
-    const ideaCreation=(event)=>{
+    const doDescChange=(event)=>{
+        setDesc(event.currentTarget.value);    
+    }
+
+    const IdeaCreation=(event)=>{
         event.preventDefault();
-        addIdea(desc, type);
+        AddIdea(desc);
         setDesc("");
-        return(
-            <div className={type}>
-                <div className='content'>
-                {idea.map((item)=>(
-                           
-                           <Idea id={item.id} item={item.desc} deleteIdea={deleteIdea} clicked={item.clicked} toggleDelete={toggleDelete}></Idea> 
-                             
-                           ))}; 
-                </div>
-            </div>
-        )
     }
 
     return(
         <div>
-            
-          <Draggable>
-               <div className="Cloud">
-                   <div className='content'>
-                        {idea.map((item)=>(
-                           
-                         <Idea id={item.id} item={item.desc} deleteIdea={deleteIdea} clicked={item.clicked} toggleDelete={toggleDelete}></Idea> 
-                           
-                         ))}; 
-                         
-                   </div>
-               </div>
-            </Draggable>   
-               
-             
+             { cloudwall.map((item)=>(
+                        
+                <Idea id={item.id} item={item.desc} deleteIdea={DeleteIdea} clicked={item.clicked} toggleDelete={ToggleDelete}></Idea> 
+                            
+            )) }  
+        
            <div className="container m-0">
            <div className="card m-0">
            <div className="text-center">
-           <div className="col-md-12">    
+           <div className="col-md-12"> 
+
            <h4>Idea Creator</h4>
-           <form onSubmit={ideaCreation}>
-                         <input value={desc}
-                            onChange={doDescChange}
-                            placeholder="What's your idea?">
-                         </input>
-                         <input type="submit" value="Add"></input>
-                       </form>
+
+           <form onSubmit={IdeaCreation}>
+                    <input value={desc}
+                        onChange={doDescChange}
+                        placeholder="What's your idea?">
+                    </input>
+                    <input type="submit" value="Add"></input>
+            </form>
        
-           </div></div></div></div></div>
+           </div></div></div></div>
+           </div>
            
-     );
-}
+     )
+
+    }
 export default CloudWall;
