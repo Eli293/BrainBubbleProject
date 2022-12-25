@@ -1,6 +1,6 @@
 # BrainBubbleProject
 
-**HOSTING:
+###HOSTING:
 https://even-jam.surge.sh/
 
 “Brain Bubble” is an application project that will be available through your web browser. The project will consist of a friendly almost childlike appearance that will form ideas transmitted via the client themselves. They will have to specify what kind of project they want to brainstorm for and will be able to edit the name of their cloudwall that will appear.
