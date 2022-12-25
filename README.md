@@ -22,11 +22,11 @@ The project is composed of ideas and clouds. They are in a OnetoOne relationship
 ***
 ENDPOINTS:
 
-*GET:/api/ideas - Get all ideas 
--POST:/api/ideas - Add an idea
++GET:/api/ideas - Get all ideas 
++POST:/api/ideas - Add an idea
 +PUT:/api/ideas/{id} - Update an idea
-*PUT:/api/ideas/cloud/{id} - Update a cloud
--DELETE:/api/ideas/{id} - Delete an idea
++PUT:/api/ideas/cloud/{id} - Update a cloud
++DELETE:/api/ideas/{id} - Delete an idea
 ***
 
 
