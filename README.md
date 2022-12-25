@@ -19,13 +19,15 @@ This type of project could benefit from an audience of all ages that are working
 Design:
 
 The project is composed of ideas and clouds. They are in a OnetoOne relationship which means that one cannot exist without the other. This also assumes that deleting an idea will also delete the cloud with it.
+***
+ENDPOINTS:
 
-GET:/api/ideas - Get all ideas
-POST:/api/ideas - Add an idea
-PUT:/api/ideas/{id} - Update an idea
-PUT:/api/ideas/cloud/{id} - Update a cloud
-DELETE:/api/ideas/{id} - Delete an idea
-
+-GET:/api/ideas - Get all ideas 
+-POST:/api/ideas - Add an idea
+-PUT:/api/ideas/{id} - Update an idea
+-PUT:/api/ideas/cloud/{id} - Update a cloud
+-DELETE:/api/ideas/{id} - Delete an idea
+***
 
 
 
