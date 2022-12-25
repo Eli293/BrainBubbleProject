@@ -8,7 +8,6 @@ import axios from 'axios';
 let id = 2;
 function CloudWall()
 {
-    
 
     //We set the initial cloudwall which is an empty array
     const [cloudwall, setCloudWall] = useState([]);
@@ -70,7 +69,7 @@ function CloudWall()
         toast.success("A new Idea has appeared!", {
             position: toast.POSITION.TOP_CENTER
         }); 
-        
+
     }
 
     const doDescChange=(event)=>{

@@ -3,6 +3,7 @@ import './App.css';
 import CloudWall from './components/CloudWall';
 import { useState } from 'react';
 import Avvvatars from 'avvvatars-react';
+import {Helmet} from 'react-helmet';
 
 function App() {
     const [project, setProject] = useState('Brain Bubble Project');
@@ -16,6 +17,10 @@ function App() {
     }
   return (
     <div className="App">
+      <Helmet>
+    <meta charset="utf-8" />
+    <title>Brain Bubble</title>
+    </Helmet>
       <h1>
         <Avvvatars value= {credits}></Avvvatars>
           <Editable
@@ -33,13 +38,13 @@ function App() {
 
       <CloudWall></CloudWall>
 
+      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br>
 
-<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-<br></br><br></br><br></br><br></br><br></br><br></br>
-<br></br><br></br><br></br><br></br><br></br><br></br>
 
 </div>
   );

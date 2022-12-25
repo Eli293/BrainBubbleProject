@@ -5,6 +5,7 @@
     "backend": "^0.0.0",
     "react-dnd-html5-backend": "^16.0.1",
     "react-draggable": "^4.4.5",
+    "react-helmet": "^6.1.0",
     "react-widgets": "^5.8.4"
   }
 }
