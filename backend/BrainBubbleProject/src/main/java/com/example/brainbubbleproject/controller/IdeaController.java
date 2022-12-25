@@ -26,7 +26,7 @@ public class IdeaController {
 
         ideas.forEach(idea ->{
             IdeaResponse ideaResponse = new IdeaResponse(idea);
-            ideaResponses.add(new IdeaResponse(idea));
+            ideaResponses.add(ideaResponse);
         });
         return ideaResponses;
     }
