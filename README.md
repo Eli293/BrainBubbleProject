@@ -7,7 +7,7 @@ https://even-jam.surge.sh/
 
 This application was written in React.js. There were many challenges like how to add a cloud for each idea given by the user, and the whole implementation of the backend as a whole.
 ```
-npm install brainbubbleproject
+npm git clone https://github.com/Eli293/BrainBubbleProject.git
 npm start
 ```
 
